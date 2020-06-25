@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static org.openqa.selenium.By.cssSelector;
+
 
 public class FormTest {
     private DataClass dataClass = new DataClass();
@@ -54,8 +54,8 @@ public class FormTest {
         form.$(("[data-test-id=date] input")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
         form.$(("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
         form.$(("[data-test-id=date] input")).sendKeys(data.format(DateFormatter));
-        form.$(("[data-test-id=agreement]")).click();
-       form.$(byText("Запланировать")).click();
+        form.$(byText("Запланировать")).click();
+        $((".notification_status_error .button")).click();
         $(withText("Успешно!")).waitUntil(Condition.visible, 15000);
     }
 
@@ -79,6 +79,5 @@ public class FormTest {
         form.$(byText("Запланировать")).click();
         $(byText("Заказ на выбранную дату невозможен")).waitUntil(Condition.visible, 15000);
     }
-
 
 }
