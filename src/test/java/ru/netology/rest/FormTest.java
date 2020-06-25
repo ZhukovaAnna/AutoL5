@@ -27,13 +27,13 @@ public class FormTest {
     void shouldRegistrationForm(){
         open("http://localhost:9999");
         SelenideElement form = $("[action]");
-        form.$(cssSelector("[data-test-id=city] input")).sendKeys(City);
-        form.$(cssSelector("[data-test-id=date] input")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
-        form.$(cssSelector("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
-        form.$(cssSelector("[data-test-id=date] input")).sendKeys(data.format(DateFormatter));
-        form.$(cssSelector("[name=name]")).sendKeys(Name);
-        form.$(cssSelector("[name=phone]")).sendKeys(Phone);
-        form.$(cssSelector("[data-test-id=agreement]")).click();
+        form.$(("[data-test-id=city] input")).sendKeys(City);
+        form.$(("[data-test-id=date] input")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        form.$(("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
+        form.$(("[data-test-id=date] input")).sendKeys(data.format(DateFormatter));
+        form.$(("[name=name]")).sendKeys(Name);
+        form.$(("[name=phone]")).sendKeys(Phone);
+        form.$(("[data-test-id=agreement]")).click();
         form.$(byText("Запланировать")).click();
         $((".notification__title")).waitUntil(Condition.visible, 15000);
     }
@@ -42,25 +42,20 @@ public class FormTest {
     void shouldRegistrationNewDateCheck() {
         open("http://localhost:9999");
         SelenideElement form = $("[action]");
-        form.$(cssSelector("[data-test-id=city] input")).sendKeys(City);
-        form.$(cssSelector("[data-test-id=date] input")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
-        form.$(cssSelector("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
-        form.$(cssSelector("[data-test-id=date] input")).sendKeys(data.format(DateFormatter));
-        form.$(cssSelector("[name=name]")).sendKeys(Name);
-        form.$(cssSelector("[name=phone]")).sendKeys(Phone);
-        form.$(cssSelector("[data-test-id=agreement]")).click();
+        form.$(("[data-test-id=city] input")).sendKeys(City);
+        form.$(("[data-test-id=date] input")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        form.$(("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
+        form.$(("[data-test-id=date] input")).sendKeys(data.format(DateFormatter));
+        form.$(("[name=name]")).sendKeys(Name);
+        form.$(("[name=phone]")).sendKeys(Phone);
+        form.$(("[data-test-id=agreement]")).click();
         form.$(byText("Запланировать")).click();
         $(byText("Успешно!")).waitUntil(Condition.visible, 15000);
-        open("http://localhost:9999");
-        form.$(cssSelector("[data-test-id=city] input")).sendKeys(City);
-        form.$(cssSelector("[data-test-id=date] input")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
-        form.$(cssSelector("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
-        form.$(cssSelector("[data-test-id=date] input")).sendKeys(data.format(DateFormatter));
-        form.$(cssSelector("[name=name]")).sendKeys(Name);
-        form.$(cssSelector("[name=phone]")).sendKeys(Phone);
-        form.$(cssSelector("[data-test-id=agreement]")).click();
-        form.$(byText("Запланировать")).click();
-        $(cssSelector(".notification_status_error .button")).click();
+        form.$(("[data-test-id=date] input")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        form.$(("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
+        form.$(("[data-test-id=date] input")).sendKeys(data.format(DateFormatter));
+        form.$(("[data-test-id=agreement]")).click();
+       form.$(byText("Запланировать")).click();
         $(withText("Успешно!")).waitUntil(Condition.visible, 15000);
     }
 
@@ -68,23 +63,19 @@ public class FormTest {
     void shouldNotRegistrationIfDataInvalid() {
         open("http://localhost:9999");
         SelenideElement form = $("[action]");
-        form.$(cssSelector("[data-test-id=city] input")).sendKeys(City);
-        form.$(cssSelector("[data-test-id=date] input")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
-        form.$(cssSelector("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
-        form.$(cssSelector("[data-test-id=date] input")).sendKeys(data.format(DateFormatter));
-        form.$(cssSelector("[name=name]")).sendKeys(Name);
-        form.$(cssSelector("[name=phone]")).sendKeys(Phone);
-        form.$(cssSelector("[data-test-id=agreement]")).click();
+        form.$(("[data-test-id=city] input")).sendKeys(City);
+        form.$(("[data-test-id=date] input")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        form.$(("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
+        form.$(("[data-test-id=date] input")).sendKeys(data.format(DateFormatter));
+        form.$(("[name=name]")).sendKeys(Name);
+        form.$(("[name=phone]")).sendKeys(Phone);
+        form.$(("[data-test-id=agreement]")).click();
         form.$(byText("Запланировать")).click();
         $(byText("Успешно!")).waitUntil(Condition.visible, 15000);
-        open("http://localhost:9999");
-        form.$(cssSelector("[data-test-id=city] input")).sendKeys(City);
-        form.$(cssSelector("[data-test-id=date] input")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
-        form.$(cssSelector("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
-        form.$(cssSelector("[data-test-id=date] input")).sendKeys(now.format(DateFormatter));
-        form.$(cssSelector("[name=name]")).sendKeys(Name);
-        form.$(cssSelector("[name=phone]")).sendKeys(Phone);
-        form.$(cssSelector("[data-test-id=agreement]")).click();
+        form.$(("[data-test-id=date] input")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        form.$(("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
+        form.$(("[data-test-id=date] input")).sendKeys(now.format(DateFormatter));
+        form.$(("[data-test-id=agreement]")).click();
         form.$(byText("Запланировать")).click();
         $(byText("Заказ на выбранную дату невозможен")).waitUntil(Condition.visible, 15000);
     }
